@@ -11,8 +11,6 @@ if [ $CUR_HOSTNAME == $NEW_HOSTNAME ] ; then
 while true; do
 sleep 1
 done
-#	echo "Sorry, you are already renamed."
-#	exit 2
 fi
 
 
