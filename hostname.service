@@ -1,0 +1,9 @@
+[Install]
+WantedBy=multi-user.target
+
+[Unit]
+Description=Hostname rename to sda SerialNumber
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/renamesys.sh
