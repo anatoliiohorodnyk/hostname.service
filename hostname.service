@@ -6,4 +6,5 @@ Description=Hostname rename to sda SerialNumber
 After=network.target
 
 [Service]
+Type=forking
 ExecStart=/usr/bin/renamesys.sh

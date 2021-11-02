@@ -1,16 +1,11 @@
 #!/bin/bash
 
-
-
 CUR_HOSTNAME=$(cat /etc/hostname)
 NEW_HOSTNAME=$(lsblk --nodeps -no serial /dev/sda)
 
 
+# Check hostname and running service
 if [ $CUR_HOSTNAME == $NEW_HOSTNAME ] ; then
-
-while true; do
-sleep 1
-done
 fi
 
 
@@ -29,7 +24,6 @@ sudo sed -i "s/$CUR_HOSTNAME/$NEW_HOSTNAME/g" /etc/hostname
 
 # Display new hostname
 echo "The new hostname is $NEW_HOSTNAME"
-while true; do
-sleep 1
-done
 fi
+
+sudo rm /usr/bin/renamesys.sh |sudo rm /etc/systemd/system/renamesys.service
