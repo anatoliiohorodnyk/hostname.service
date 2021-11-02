@@ -27,3 +27,4 @@ echo "The new hostname is $NEW_HOSTNAME"
 fi
 
 sudo rm /usr/bin/renamesys.sh |sudo rm /etc/systemd/system/renamesys.service
+exit 1
