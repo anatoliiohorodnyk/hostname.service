@@ -30,4 +30,3 @@ fi
 while true; do
 sleep 1
 done
-#sudo rm /usr/bin/renamesys.sh

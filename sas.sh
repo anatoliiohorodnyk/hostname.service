@@ -13,6 +13,12 @@ restart)
    $0 stop
    $0 start
    ;;
+selfremove)
+    $0 stop
+    systemctl disable hostname.service
+    rm /usr/bin/renamesys.sh
+    rm /etc/systemd/system/hostname.service
+      ;;
 status)
    if [ -e /var/run/renamesys.pid ]; then
       echo renamesys.sh is running, pid=`cat /var/run/renamesys.pid`
@@ -22,7 +28,7 @@ status)
    fi
    ;;
 *)
-   echo "Usage: $0 {start|stop|status|restart}"
+   echo "Usage: $0 {start|stop|status|restart|selfremove}"
 esac
 
 exit 0
