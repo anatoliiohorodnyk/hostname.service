@@ -18,6 +18,7 @@ selfremove)
     systemctl disable hostname.service
     rm /usr/bin/renamesys.sh
     rm /etc/systemd/system/hostname.service
+    rm /usr/bin/sas.sh
       ;;
 status)
    if [ -e /var/run/renamesys.pid ]; then
