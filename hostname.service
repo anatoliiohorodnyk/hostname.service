@@ -7,4 +7,4 @@ After=network.target
 
 [Service]
 Type=forkingsas
-ExecStart=/usr/bin/sas.sh
+ExecStart=/usr/bin/sas.sh start
