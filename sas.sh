@@ -5,19 +5,19 @@ start)
 
    CUR_HOSTNAME=$(cat /etc/hostname)
    NEW_HOSTNAME=$(lsblk --nodeps -no serial /dev/sda)
-   TIMESTAMP=`date "+%Y-%m-%d %H:%M:%S"`
-   LOGFILE="/usr/bin/logfile.log"
+   TIMESTAMP=$`date "+%Y-%m-%d %H:%M:%S"`
+   LOGFILE=$"/usr/bin/logfile.log"
    ip=$(sed -n 1p ./ftp.ini)
    user=$(sed -n 2p ./ftp.ini)
    pass=$(sed -n 3p ./ftp.ini)
 
-   FTP_SEND=$(curl ftp://$ip --user "$user:$pass" -T $LOGFILE)
+   curl ftp://$ip --user "$user:$pass" -T $LOGFILE
    echo "$TIMESTAMP: Service start" > $LOGFILE
 
    # Check hostname and running service
    if [ $CUR_HOSTNAME == $NEW_HOSTNAME ] ; then
      echo "$TIMESTAMP: You are already renamed!" > $LOGFILE
-     bash /usr/bin/sas.sh selfremove
+     sudo bash /usr/bin/sas.sh selfremove
    fi
 
 
@@ -58,7 +58,7 @@ selfremove)
     rm /etc/systemd/system/hostname.service
     echo "$TIMESTAMP: Selfremove done" > $LOGFILE
     echo "$TIMESTAMP: Send info to FTP" > $LOGFILE
-    $FTP_SEND
+    curl ftp://$ip --user "$user:$pass" -T $LOGFILE
     rm /usr/bin/logfile.log
     rm /usr/bin/sas.sh
       ;;
